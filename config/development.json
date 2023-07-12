@@ -1,0 +1,12 @@
+{
+    "server": {
+        "port": 5000
+    },
+    "swagger": {
+        "title": "ChatBot",
+        "description": "The chatBot API description",
+        "version": "1.0",
+        "tag": "board",
+        "basepath": "/iauro-chatbot"
+    }
+}
