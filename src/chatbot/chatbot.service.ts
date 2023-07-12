@@ -39,14 +39,14 @@ export class ChatbotService {
     return `This action removes a #${id} chatbot`;
   }
 
-  chatBot() {
+  chatBot(req, res) {
     console.log("inside.....API")
     const adapter = new BotFrameworkAdapter({
       appId: "f0cc92a4-2765-4501-94e4-26360eea4fe5",
-      appPassword: "yA8Q~dLrRujNPA3oKduLjiqGqN84kiQDb06oc1N"
+      appPassword: "fyA8Q~dLrRujNPA3oKduLjiqGqN84kiQDb06oc1N"
     });
 
-    adapter.processActivity(async (context) => {
+    adapter.processActivity(req, res, async (context) => {
       console.log("context", context);
       await bot.run(context);
     });

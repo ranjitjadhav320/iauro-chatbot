@@ -1,7 +1,8 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Req, Res } from '@nestjs/common';
 import { ChatbotService } from './chatbot.service';
 import { CreateChatbotDto } from './dto/create-chatbot.dto';
 import { UpdateChatbotDto } from './dto/update-chatbot.dto';
+import { Request, Response } from 'express';
 
 @Controller('chatbot')
 export class ChatbotController {
@@ -33,7 +34,7 @@ export class ChatbotController {
   }
 
   @Post('/api/messages')
-  chatBot() {
-    return this.chatbotService.chatBot();
+  chatBot(@Req() request: Request, @Res() response: Response) {
+    return this.chatbotService.chatBot(request, response);
   }
 }
