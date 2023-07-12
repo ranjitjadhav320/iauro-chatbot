@@ -51,6 +51,6 @@ jobs:
         uses: azure/webapps-deploy@v2
         with:
           app-name: 'iauro-chatbot'
-          slot-name: 'development'
+          slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D9B5BA24B6724BBAB4F18C559074BE5C }}
           package: .
