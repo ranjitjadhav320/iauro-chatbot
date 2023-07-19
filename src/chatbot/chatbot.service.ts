@@ -21,13 +21,14 @@ class MyBot extends ActivityHandler {
         case "i want a leave":
           const reply = {
             type: ActivityTypes.Message,
-            text: 'Which types of leave do you want?',
+            text: "Which types of leave do you want?",
             attachments: [
             CardFactory.heroCard(
-                'Leave types',
+                "Types of leave",
+                "select leave from below",
                  null,
-                ['sick leave', 'holiday leave'], // Two options
-                ['sick leave', 'holiday leave'] // Descriptions for the options
+                ["sick leave", "holiday leave"], // Two options
+                ["sick leave", "holiday leave"] // Descriptions for the options
             )
             ]
           };
@@ -44,28 +45,28 @@ class MyBot extends ActivityHandler {
 
           const adaptiveCard = {
             "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
-            type: "AdaptiveCard",
-            version: "1.2",
-            body: [
+            "type": "AdaptiveCard",
+            "version": "1.2",
+            "body": [
               {
-                  type: 'Iauro Website',
-                  text: 'Iauro Website',
-                  size: 'large'
+                  "type": "TextBlock",
+                  "text": "Iauro Website",
+                  "size": "large"
               },
               {
-                  type: 'Image',
-                  url: 'https://source.unsplash.com/user/c_v_r/1900x800',
-                  size: 'medium'
+                  "type": "Image",
+                  "url": "https://source.unsplash.com/user/c_v_r/1900x800",
+                  "size": "medium"
               }
           ],
-          actions: [
+          "actions": [
               {
-                  type: 'Action.OpenUrl',
-                  title: 'Open url',
-                  url: 'https://iauro.com'
+                  "type": "Action.OpenUrl",
+                  "title": "Open url",
+                  "url": "https://iauro.com"
               }
           ]
-        };
+          }
         
         // Create a message activity with the Adaptive Card attachment
         const message = {
@@ -74,6 +75,10 @@ class MyBot extends ActivityHandler {
             attachments: [CardFactory.adaptiveCard(adaptiveCard)]
 
         };
+
+
+
+
         
         // Send the message activity
         await context.sendActivity(message);
