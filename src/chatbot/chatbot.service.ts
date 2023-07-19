@@ -24,7 +24,8 @@ class MyBot extends ActivityHandler {
             text: 'Which types of leave do you want?',
             attachments: [
             CardFactory.heroCard(
-                'Options',
+                'Leave types',
+                 null,
                 ['sick leave', 'holiday leave'], // Two options
                 ['sick leave', 'holiday leave'] // Descriptions for the options
             )
@@ -40,35 +41,73 @@ class MyBot extends ActivityHandler {
             await next();
             break;
         case "iauro website":
-          const adaptiveCard = CardFactory.adaptiveCard({
-            type: 'AdaptiveCard',
+
+          const adaptiveCard = {
+            "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+            type: "AdaptiveCard",
+            version: "1.2",
             body: [
-                {
-                    type: 'Iauro Website',
-                    text: 'Iauro Website',
-                    size: 'large'
-                },
-                {
-                    type: 'Image',
-                    url: 'https://source.unsplash.com/user/c_v_r/1900x800',
-                    size: 'medium'
-                }
-            ],
-            actions: [
-                {
-                    type: 'Action.OpenUrl',
-                    title: 'Open url',
-                    url: 'https://iauro.com'
-                }
-            ]
-          });
-          const reply_adaptive = {
-            type: 'message',
+              {
+                  type: 'Iauro Website',
+                  text: 'Iauro Website',
+                  size: 'large'
+              },
+              {
+                  type: 'Image',
+                  url: 'https://source.unsplash.com/user/c_v_r/1900x800',
+                  size: 'medium'
+              }
+          ],
+          actions: [
+              {
+                  type: 'Action.OpenUrl',
+                  title: 'Open url',
+                  url: 'https://iauro.com'
+              }
+          ]
+        };
+        
+        // Create a message activity with the Adaptive Card attachment
+        const message = {
+            type: ActivityTypes.Message,
             text: 'Here is an iauro website',
-            attachments: [adaptiveCard]
-            };
-            await context.sendActivity(reply_adaptive);
-            await next();
+            attachments: [CardFactory.adaptiveCard(adaptiveCard)]
+
+        };
+        
+        // Send the message activity
+        await context.sendActivity(message);
+        await next();
+
+          // const adaptiveCard = CardFactory.adaptiveCard({
+          //   type: 'AdaptiveCard',
+          //   body: [
+          //       {
+          //           type: 'Iauro Website',
+          //           text: 'Iauro Website',
+          //           size: 'large'
+          //       },
+          //       {
+          //           type: 'Image',
+          //           url: 'https://source.unsplash.com/user/c_v_r/1900x800',
+          //           size: 'medium'
+          //       }
+          //   ],
+          //   actions: [
+          //       {
+          //           type: 'Action.OpenUrl',
+          //           title: 'Open url',
+          //           url: 'https://iauro.com'
+          //       }
+          //   ]
+          // });
+          // const reply_adaptive = {
+          //   type: 'message',
+          //   text: 'Here is an iauro website',
+          //   attachments: [adaptiveCard]
+          //   };
+          //   await context.sendActivity(reply_adaptive);
+          //   await next();
             break;        
         default:
           await context.sendActivity(`Sorry i didn't get your question😊`);
