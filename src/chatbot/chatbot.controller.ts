@@ -37,4 +37,9 @@ export class ChatbotController {
   chatBot(@Req() request: Request, @Res() response: Response) {
     return this.chatbotService.chatBot(request, response);
   }
+
+  @Post('/api/messages/reciever')
+  chatBotReciever(@Req() request: Request, @Res() response: Response) {
+    return this.chatbotService.chatBotReciever(request, response);
+  }
 }
