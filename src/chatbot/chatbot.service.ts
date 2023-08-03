@@ -185,8 +185,8 @@ export class ChatbotService {
   chatBot(req, res) {
     console.log("inside.....API")
     const adapter = new BotFrameworkAdapter({
-      appId: "f0cc92a4-2765-4501-94e4-26360eea4fe5",
-      appPassword: "fyA8Q~dLrRujNPA3oKduLjiqGqN84kiQDb06oc1N"
+      appId: "",
+      appPassword: ""
     });
     
     adapter.processActivity(req, res, async (context) => {
@@ -199,8 +199,8 @@ export class ChatbotService {
   chatBotReciever(req, res) {
     console.log("inside.....API")
     const adapter = new BotFrameworkAdapter({
-      appId: "f0cc92a4-2765-4501-94e4-26360eea4fe5",
-      appPassword: "fyA8Q~dLrRujNPA3oKduLjiqGqN84kiQDb06oc1N"
+      appId: "",
+      appPassword: ""
     });
     
     adapter.processActivity(req, res, async (context) => {
